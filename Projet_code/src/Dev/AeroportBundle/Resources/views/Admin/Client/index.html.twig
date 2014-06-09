@@ -1,0 +1,43 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+Liste des clients
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="{{ asset('bundles/devaeroport/js/admin_client.js') }}"></script>
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Mail</th>
+    <th></th>
+    <th></th>
+</thead>
+
+{% for client in arrayClients %}
+<tbody>
+    <tr id="row-{{ client.id }}">
+        <td id="clientId">{{ client.id }}</td>
+        <td id="clientNom">{{ client.nom }}</td>
+        <td id="clientNom">{{ client.prenom }}</td>
+        <td id="clientNom">{{ client.email }}</td>
+        <td><a class="deleteLink" href="#">Supprimer</a></td>
+    </tr>
+{% else %}
+	<tr><td>Aucun client n'a été trouvé.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

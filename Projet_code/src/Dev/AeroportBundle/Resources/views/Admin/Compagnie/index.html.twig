@@ -1,0 +1,42 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+Liste des compagnies
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="{{ asset('bundles/devaeroport/js/admin_compagnie.js') }}"></script>
+
+<a href="{{ path('admin_compagnie_add') }}">Ajouter une compagnie</a><br /><br />
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th></th>
+    <th></th>
+</thead>
+
+{% for compagnie in arrayCompagnies %}
+<tbody>
+    <tr id="row-{{ compagnie.compagnieId }}">
+        <td id="compagnieId">{{ compagnie.compagnieId }}</td>
+        <td id="compagnieNom">{{ compagnie.compagnieNom }}</td>
+        <td><a href="{{ path('admin_compagnie_edit', { 'id': compagnie.compagnieId }) }}">Modifier</a></td>
+        <td><a class="deleteLink" href="#">Supprimer</a></td>
+    </tr>
+{% else %}
+	<tr><td>Aucune compagnie n'a été trouvée.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

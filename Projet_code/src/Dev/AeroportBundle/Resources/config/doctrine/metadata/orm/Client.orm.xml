@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Client" table="client">
+    <id name="cliId" type="integer" column="cli_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="cliNom" type="string" column="cli_nom" length="100" nullable="false"/>
+    <field name="cliPrenom" type="string" column="cli_prenom" length="100" nullable="false"/>
+    <field name="cliMail" type="string" column="cli_mail" length="100" nullable="false"/>
+    <field name="cliMdp" type="string" column="cli_mdp" length="100" nullable="false"/>
+  </entity>
+</doctrine-mapping>

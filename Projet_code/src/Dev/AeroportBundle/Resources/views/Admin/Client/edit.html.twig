@@ -1,0 +1,24 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+{% if client.cliId %}
+{{ parent() }} - Modification du client {{ client.cliId }}
+{% else %}
+{{ parent() }} - Ajout d'un client
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if client.cliId %}{{ path('admin_client_edit', {'id':client.cliId}) }}{% else %}{{ path('admin_client_add') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.cliNom) }}
+    {{ form_row(form.cliPrenom) }}
+    {{ form_row(form.cliMail) }}
+    {{ form_row(form.cliMdp) }}
+        
+    <input type="submit" id="submit" value="{% if client.cliId %}{{ 'Valider'}}{% else %}{{ 'Ajouter'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+Liste des réservations pour ce vol
+{% endblock %}
+
+{% block content %}
+
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Mail</th>
+</thead>
+
+{% for client in arrayClients %}
+<tbody>
+    <tr>
+        
+        <td id="volDep">{{ client.nom }}</td>
+        <td id="volDep">{{ client.prenom }}</td>
+        <td id="volDep">{{ client.email }}</td>
+        
+    </tr>
+{% else %}
+	<tr><td>Aucun client n'a réservé ce vol.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+<a href="{{ path('admin_vol_index') }}"> <= Retour à la liste des vols </a>
+
+</br></br>
+
+
+{% endblock %}

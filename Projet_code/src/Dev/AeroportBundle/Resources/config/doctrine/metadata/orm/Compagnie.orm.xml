@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Compagnie" table="compagnie">
+    <id name="compagnieId" type="integer" column="compagnie_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="compagnieNom" type="string" column="compagnie_nom" length="100" nullable="false"/>
+  </entity>
+</doctrine-mapping>

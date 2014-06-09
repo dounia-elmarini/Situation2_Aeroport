@@ -1,0 +1,23 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+{% if avion.avionId %}
+{{ parent() }} - Modification de l'avion {{ avion.avionId }}
+{% else %}
+{{ parent() }} - Ajout de l'avion
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if avion.avionId %}{{ path('admin_avion_edit', {'id':avion.avionId}) }}{% else %}{{ path('admin_avion_add') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.avionNom) }}
+        
+    {{ form_row(form.avionCapacite) }}
+        
+    <input type="submit" id="submit" value="{% if avion.avionId %}{{ 'Valider'}}{% else %}{{ 'Ajouter'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

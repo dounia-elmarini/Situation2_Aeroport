@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+{% if internaute.email %}
+{{ parent() }} - Modification de votre compte {{ internaute.email }}
+{% else %}
+{{ parent() }} - Création de votre compte
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if internaute.email %}{{ path('client_modifier_compte', {'email':internaute.email}) }}{% else %}{{ path('client_creer_compte') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.email) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.region) }}
+    {{ form_row(form.password) }}
+        
+    <input type="submit" id="submit" value="{% if internaute.email %}{{ 'Valider'}}{% else %}{{ 'Creer'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

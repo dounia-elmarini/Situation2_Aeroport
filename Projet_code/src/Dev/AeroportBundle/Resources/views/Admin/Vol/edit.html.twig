@@ -1,0 +1,31 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+{% if vol.volId %}
+{{ parent() }} - Modification du vol {{ vol.volId }}
+{% else %}
+{{ parent() }} - Ajout d'un vol
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if vol.volId %}{{ path('admin_vol_edit', {'id':vol.volId}) }}{% else %}{{ path('admin_vol_add') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.volNom) }}
+        
+    {{ form_row(form.volComp) }}
+    
+    {{ form_row(form.volVilleDep) }}
+    {{ form_row(form.volVilleArriv) }}
+    
+    {{ form_row(form.volDateDep) }}
+    {{ form_row(form.volDateArriv) }}
+    
+    {{ form_row(form.volAvion) }}
+        
+    <input type="submit" id="submit" value="{% if vol.volId %}{{ 'Valider'}}{% else %}{{ 'Ajouter'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

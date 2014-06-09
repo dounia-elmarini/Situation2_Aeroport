@@ -1,0 +1,21 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+{% if compagnie.compagnieId %}
+{{ parent() }} - Modification de la compagnie {{ compagnie.compagnieId }}
+{% else %}
+{{ parent() }} - Ajout d'une compagnie
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if compagnie.compagnieId %}{{ path('admin_compagnie_edit', {'id':compagnie.compagnieId}) }}{% else %}{{ path('admin_compagnie_add') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.compagnieNom) }}
+
+    <input type="submit" id="submit" value="{% if compagnie.compagnieId %}{{ 'Valider'}}{% else %}{{ 'Ajouter'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

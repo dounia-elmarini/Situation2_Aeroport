@@ -1,0 +1,43 @@
+{% extends '::client_base.html.twig' %}
+
+{% block title %}
+Mes vols
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="{{ asset('bundles/devaeroport/js/client_reservation.js') }}"></script>
+
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Départ</th>
+    <th>Arrivée</th>
+    <th></th>
+</thead>
+
+{% for reservation in arrayReservations %}
+<tbody>
+    <tr id="row-{{ reservation.volId }}">
+        <td id="volId">{{ reservation.volId }}</td>
+        <td id="volNom">{{ reservation.volNom }}</td>
+        <td id="volDep">{{ reservation.volVilleDep.villeNom }} - {{ reservation.volDateDep|date() }}</td>
+        <td id="volArrivee">{{ reservation.volVilleArriv.villeNom }} - {{ reservation.volDateArriv|date() }}</td>
+        <td><a class="deleteLink" href="#">Supprimer</a></td>
+    </tr>
+{% else %}
+	<tr><td>Aucune réservation n'a été trouvé.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

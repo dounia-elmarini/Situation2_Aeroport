@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Administration {% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('bundles/devaeroport/css/bootstrap.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/devaeroport/css/main.css') }}" type="text/css" media="all" />
+        <script type="text/javascript" src="{{ asset('bundles/devaeroport/js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/devaeroport/js/bootstrap.js') }}"></script>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        
+        <div id="page">
+            <div id="header">
+
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <a class="brand" href="{{ path('homepage') }}">Accueil</a>
+                        <a class="brand" href="{{ path('client_reservation_volsdisponibles') }}">Partie Client</a>
+                        <a class="brand" href="{{ path('admin_vol_index') }}">Partie Administration</a>
+                        <ul class="nav">
+                            
+                            <li><a href="{{ path('admin_vol_index') }}">Vols</a></li>
+                            <li><a href="{{ path('admin_avion_index') }}">Avions</a></li>
+                            <li><a href="{{ path('admin_ville_index') }}">Villes</a></li>
+                            <li><a href="{{ path('admin_compagnie_index') }}">Compagnies</a></li>
+                            <li><a href="{{ path('admin_client_index') }}">Clients</a></li>
+                            
+                            <li class="divider-vertical"></li>
+                            
+                            <li> <a href="{{ path('client_modifier_compte') }}"> {{ app.user.username }} </a> </li>
+                            <li> <a href="{{ path('security_logout') }}">Déconnexion</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+              <h1>{{ block('title') }}</h1>
+              {% block content %}
+              {% endblock %}
+            </div>
+            <div id="footer">
+              <p>Libre de tous droits 2014</p>
+            </div>
+        </div>
+    </body>
+</html>

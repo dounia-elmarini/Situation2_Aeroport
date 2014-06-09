@@ -1,0 +1,21 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+{% if ville.villeId %}
+{{ parent() }} - Modification de la ville {{ ville.villeId }}
+{% else %}
+{{ parent() }} - Ajout d'une ville
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% if ville.villeId %}{{ path('admin_ville_edit', {'id':ville.villeId}) }}{% else %}{{ path('admin_ville_add') }}{% endif %}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_widget(form._token) }}
+    
+    {{ form_row(form.villeNom) }}
+
+    <input type="submit" id="submit" value="{% if ville.villeId %}{{ 'Valider'}}{% else %}{{ 'Ajouter'}}{% endif %}" name="submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends '::admin_base.html.twig' %}
+
+{% block title %}
+Liste des villes
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="{{ asset('bundles/devaeroport/js/admin_ville.js') }}"></script>
+
+<a href="{{ path('admin_ville_add') }}">Ajouter une ville</a><br /><br />
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th></th>
+    <th></th>
+</thead>
+
+{% for ville in arrayVilles %}
+<tbody>
+    <tr id="row-{{ ville.villeId }}">
+        <td id="villeId">{{ ville.villeId }}</td>
+        <td id="villeNom">{{ ville.villeNom }}</td>
+        <td><a href="{{ path('admin_ville_edit', { 'id': ville.villeId }) }}">Modifier</a></td>
+        <td><a class="deleteLink" href="#">Supprimer</a></td>
+    </tr>
+{% else %}
+	<tr><td>Aucune ville n'a été trouvée.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

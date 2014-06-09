@@ -1,0 +1,42 @@
+{% extends '::client_base.html.twig' %}
+
+{% block title %}
+Liste des vols
+{% endblock %}
+
+{% block content %}
+
+
+<span id="update-message" class="label label-success" style="display: none"></span>
+<div id="loader" style="display: none">
+    <img src="{{ asset('bundles/devaeroport/images/loading.gif') }}" width="15px" height="15px" style="margin-top:8px; " alt="" />&nbsp;&nbsp;Traitement en cours
+</div>
+<br />
+
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Départ</th>
+    <th>Arrivée</th>
+    <th></th>
+</thead>
+
+{% for vol in arrayVols %}
+<tbody>
+    <tr id="row-{{ vol.volId }}">
+        <td id="volId">{{ vol.volId }}</td>
+        <td id="volNom">{{ vol.volNom }}</td>
+        <td id="volDep">{{ vol.volVilleDep.villeNom }} - {{ vol.volDateDep|date() }}</td>
+        <td id="volArrivee">{{ vol.volVilleArriv.villeNom }} - {{ vol.volDateArriv|date() }}</td>
+        <td><a href="{{ path('client_reservation_add', { 'volId': vol.volId }) }}">Réserver</a></td>
+    </tr>
+{% else %}
+	<tr><td>Aucun vol n'a été trouvé.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

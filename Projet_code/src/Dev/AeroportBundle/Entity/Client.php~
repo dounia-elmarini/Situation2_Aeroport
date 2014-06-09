@@ -1,0 +1,155 @@
+<?php
+
+namespace Dev\AeroportBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="client")
+ * @ORM\Entity
+ */
+class Client
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cli_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $cliId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_nom", type="string", length=100, nullable=false)
+     */
+    private $cliNom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_prenom", type="string", length=100, nullable=false)
+     */
+    private $cliPrenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_mail", type="string", length=100, nullable=false)
+     */
+    private $cliMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_mdp", type="string", length=100, nullable=false)
+     */
+    private $cliMdp;
+
+
+
+    /**
+     * Get cliId
+     *
+     * @return integer 
+     */
+    public function getCliId()
+    {
+        return $this->cliId;
+    }
+
+    /**
+     * Set cliNom
+     *
+     * @param string $cliNom
+     * @return Client
+     */
+    public function setCliNom($cliNom)
+    {
+        $this->cliNom = $cliNom;
+    
+        return $this;
+    }
+
+    /**
+     * Get cliNom
+     *
+     * @return string 
+     */
+    public function getCliNom()
+    {
+        return $this->cliNom;
+    }
+
+    /**
+     * Set cliPrenom
+     *
+     * @param string $cliPrenom
+     * @return Client
+     */
+    public function setCliPrenom($cliPrenom)
+    {
+        $this->cliPrenom = $cliPrenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get cliPrenom
+     *
+     * @return string 
+     */
+    public function getCliPrenom()
+    {
+        return $this->cliPrenom;
+    }
+
+    /**
+     * Set cliMail
+     *
+     * @param string $cliMail
+     * @return Client
+     */
+    public function setCliMail($cliMail)
+    {
+        $this->cliMail = $cliMail;
+    
+        return $this;
+    }
+
+    /**
+     * Get cliMail
+     *
+     * @return string 
+     */
+    public function getCliMail()
+    {
+        return $this->cliMail;
+    }
+
+    /**
+     * Set cliMdp
+     *
+     * @param string $cliMdp
+     * @return Client
+     */
+    public function setCliMdp($cliMdp)
+    {
+        $this->cliMdp = $cliMdp;
+    
+        return $this;
+    }
+
+    /**
+     * Get cliMdp
+     *
+     * @return string 
+     */
+    public function getCliMdp()
+    {
+        return $this->cliMdp;
+    }
+}
